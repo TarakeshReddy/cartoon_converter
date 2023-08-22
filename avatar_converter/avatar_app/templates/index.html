@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avatar Converter</title>
+</head>
+<style>
+    *{
+        background-color: black;
+        
+    } 
+    h4{
+        margin-top:100px;
+        color: white;
+        text-align: center;
+    }
+    form{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+    }
+    button{
+        background-color: blue;
+        box-shadow: 0 4px 5px;
+    }
+    input,button{
+        text-align: center;
+        box-shadow: 0 2px 4px;
+    }
+    input[type="file"] {
+        margin:60px 10px 0 0;
+            background-color: #3498db;
+            color: white; 
+            border: none;
+            height:20px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            
+        }
+        button[type="submit"] {
+            margin:60px 0 0 10px;
+            background-color: #2ecc71;
+            color: white; 
+            border: none;
+            height:40px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+</style>
+<body>
+    <h4>Upload the image to convert into cartoon</h4>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <span class="choose">
+            <input type="file" name="image"/>
+        </span>
+        
+        <button type="submit">Upload</button>
+    </form>
+</body>
+</html>

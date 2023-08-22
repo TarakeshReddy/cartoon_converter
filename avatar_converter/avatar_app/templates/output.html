@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uploaded Image</title>
+</head>
+<style>
+    * {
+        background-color: aquamarine;
+    }
+
+    .output {
+        text-align: center;
+    }
+
+    .output img {
+        border-radius: 20px;
+        box-shadow: 0 4px 10px rgb(50, 50, 61);
+        width: 400px;
+        height: 400px;
+    }
+
+    h3 {
+        text-align: center;
+    }
+
+    .back-button {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .back-button button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .back-button button:hover {
+        background-color: #45a049;
+    }
+
+    .zoom-buttons {
+        text-align: center;
+        margin-top: 10px;
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .zoom-buttons button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 5px 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin: 0 5px;
+    }
+
+    .zoom-buttons button:hover {
+        background-color: #45a049;
+    }
+</style>
+<body>
+    <h1>Output Image :</h1>
+    <div class="output">
+        <img class="zoomable" src="data:image/jpeg;base64,{{ image_data }}" alt="Processed Image">
+    </div>
+    <h3>The above image is the cartoon form of the given image</h3>
+    <h3><strong>Note :</strong> Please zoom-in for an improved viewing experience</h3>
+
+    <div class="back-button">
+        <button onclick="goBack()">Back to Input</button>
+    </div>
+
+    <div class="zoom-buttons">
+        <button onclick="zoomIn()">Zoom In</button>
+        <button onclick="zoomOut()">Zoom Out</button>
+    </div>
+
+    <script>
+        let scale = 1;
+
+        function zoomIn() {
+            scale += 0.1;
+            applyZoom();
+        }
+
+        function zoomOut() {
+            scale -= 0.1;
+            applyZoom();
+        }
+
+        function applyZoom() {
+            const imgElement = document.querySelector('.zoomable');
+            imgElement.style.transform = `scale(${scale})`;
+        }
+
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>
